@@ -19,11 +19,15 @@ main_page_head = '''
     <style type="text/css" media="screen">
         body {
             padding-top: 80px;
+            background-color:#000;
+            color:#ffe;
+            background-image: url("img/blue.jpg");
+            background-size: cover;
         }
         #trailer .modal-dialog {
             margin-top: 200px;
-            width: 640px;
-            height: 480px;
+            width: 1040px;
+            height: 680px;
         }
         .hanging-close {
             position: absolute;
@@ -40,7 +44,7 @@ main_page_head = '''
             padding-top: 20px;
         }
         .movie-tile:hover {
-            background-color: #EEE;
+            background-color: #EDE;
             cursor: pointer;
         }
         .scale-media {
@@ -54,7 +58,7 @@ main_page_head = '''
             width: 100%;
             left: 0;
             top: 0;
-            background-color: white;
+            background-color: black;
         }
     </style>
     <script type="text/javascript" charset="utf-8">
@@ -105,10 +109,8 @@ main_page_content = '''
     <!-- Main Page Content -->
     <div class="container">
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
-          </div>
+        <div  class="col-md-1 col-lg-12 text-center">
+            <h2>FRESH TOMATOES MOVIE TRAILERS</h2>
         </div>
       </div>
     </div>
@@ -119,6 +121,12 @@ main_page_content = '''
 </html>
 '''
 
+#additional content
+center_content = '''
+<div class="col-md-1 col-lg-12 text-center">
+    <h2>Click To Watch Trailer</h2>
+</div>
+'''
 
 # A single movie entry html template
 movie_tile_content = '''
@@ -128,7 +136,7 @@ movie_tile_content = '''
 </div>
 '''
 
-
+#this function creates the movie tiles
 def create_movie_tiles_content(movies):
     # The HTML content for this section of the page
     content = ''
@@ -149,7 +157,7 @@ def create_movie_tiles_content(movies):
         )
     return content
 
-
+#fuction creates a html file and writes into it the  content
 def open_movies_page(movies):
     # Create or overwrite the output file
     output_file = open('fresh_tomatoes.html', 'w')
@@ -159,7 +167,7 @@ def open_movies_page(movies):
         movie_tiles=create_movie_tiles_content(movies))
 
     # Output the file
-    output_file.write(main_page_head + rendered_content)
+    output_file.write(main_page_head +center_content+ rendered_content)
     output_file.close()
 
     # open the output file in the browser (in a new tab, if possible)
